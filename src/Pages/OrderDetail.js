@@ -1,26 +1,37 @@
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { base44 } from "../api/base44Client";
-import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { createPageUrl } from "../utils";
 import { ArrowLeft, MapPin, Plane } from "lucide-react";
 import { Badge } from "../components/ui/badge";
 import { format } from "date-fns";
+import DeliveryTracker from "../components/orders/DeliveryTracker";
 
 export default function OrderDetailPage() {
   const navigate = useNavigate();
   const urlParams = new URLSearchParams(window.location.search);
   const orderId = urlParams.get('order');
 
-  const { data: order, isLoading } = useQuery({
-    queryKey: ['order', orderId],
-    queryFn: async () => {
-      const orders = await base44.entities.Order.list();
-      return orders.find(o => o.id === orderId);
-    },
-    refetchInterval: 5000, // Refetch every 5 seconds for real-time updates
-  });
+  const [order, setOrder] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const loadOrder = async () => {
+      if (!orderId) return;
+      
+      try {
+        const orders = await base44.entities.Order.list();
+        const foundOrder = orders.find(o => o.id === orderId);
+        setOrder(foundOrder);
+        setIsLoading(false);
+      } catch (error) {
+        console.error('Error loading order:', error);
+        setIsLoading(false);
+      }
+    };
+    loadOrder();
+  }, [orderId]);
 
   if (isLoading || !order) {
     return (
@@ -81,6 +92,9 @@ export default function OrderDetailPage() {
             </div>
           </div>
         </div>
+
+        {/* Delivery Tracker */}
+        <DeliveryTracker order={order} />
       </div>
     </div>
   );

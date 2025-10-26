@@ -1,14 +1,23 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { User, Mail, MapPin, Clock, Settings, LogOut } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 
 export default function ProfilePage() {
+  const navigate = useNavigate();
+  
   const user = {
     name: "UCSC Student",
     email: "student@ucsc.edu",
     dorm: "Adams House",
     memberSince: "2023"
+  };
+
+  const handleSignOut = () => {
+    localStorage.removeItem('ucsc_user');
+    localStorage.removeItem('ucsc_cart');
+    navigate('/');
   };
 
   const stats = [
@@ -72,19 +81,31 @@ export default function ProfilePage() {
 
         {/* Quick Actions */}
         <div className="space-y-3">
-          <Button className="w-full justify-start bg-white border border-gray-200 text-gray-900 hover:bg-gray-50">
+          <Button 
+            onClick={() => navigate('/account-settings')}
+            className="w-full justify-start bg-white border border-gray-200 text-gray-900 hover:bg-gray-50"
+          >
             <Settings className="w-5 h-5 mr-3" />
             Account Settings
           </Button>
-          <Button className="w-full justify-start bg-white border border-gray-200 text-gray-900 hover:bg-gray-50">
+          <Button 
+            onClick={() => navigate('/account-settings')}
+            className="w-full justify-start bg-white border border-gray-200 text-gray-900 hover:bg-gray-50"
+          >
             <MapPin className="w-5 h-5 mr-3" />
             Delivery Addresses
           </Button>
-          <Button className="w-full justify-start bg-white border border-gray-200 text-gray-900 hover:bg-gray-50">
+          <Button 
+            onClick={() => navigate('/orders')}
+            className="w-full justify-start bg-white border border-gray-200 text-gray-900 hover:bg-gray-50"
+          >
             <Clock className="w-5 h-5 mr-3" />
             Order History
           </Button>
-          <Button className="w-full justify-start bg-red-50 border border-red-200 text-red-600 hover:bg-red-100">
+          <Button 
+            onClick={handleSignOut}
+            className="w-full justify-start bg-red-50 border border-red-200 text-red-600 hover:bg-red-100"
+          >
             <LogOut className="w-5 h-5 mr-3" />
             Sign Out
           </Button>

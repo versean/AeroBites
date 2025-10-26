@@ -6,8 +6,9 @@ class MockBase44Client {
     this.entities = {
       DiningLocation: {
         list: async () => {
+          console.log('Fetching dining locations...');
           // Mock dining locations data
-          return [
+          const locations = [
             {
               id: '1',
               name: 'Cowell/Stevenson Dining Hall',
@@ -229,6 +230,8 @@ class MockBase44Client {
               supports_drone: false
             }
           ];
+          console.log('Returning locations:', locations.length);
+          return locations;
         }
       },
       MenuItem: {

@@ -1,7 +1,6 @@
 
 import React, { useState, useEffect } from "react";
 import { base44 } from "../api/base44Client";
-import { useQuery } from "@tanstack/react-query";
 import { ArrowLeft, Search, Clock } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { createPageUrl } from "../utils";
@@ -47,25 +46,34 @@ export default function MenuPage() {
     return () => clearInterval(interval);
   }, []);
 
-  const { data: location } = useQuery({
-    queryKey: ['location', locationId],
-    queryFn: async () => {
-      const locations = await base44.entities.DiningLocation.list();
-      return locations.find(loc => loc.id === locationId);
-    },
-    enabled: !!locationId,
-  });
+  const [location, setLocation] = useState(null);
+  const [menuItems, setMenuItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const { data: menuItems, isLoading, error } = useQuery({
-    queryKey: ['menu-items', locationId],
-    queryFn: () => base44.entities.MenuItem.filter({ dining_location_id: locationId }),
-    initialData: [],
-    enabled: !!locationId,
-  });
+  useEffect(() => {
+    const loadData = async () => {
+      if (!locationId) return;
+      
+      try {
+        console.log('Loading location and menu items for:', locationId);
+        const locations = await base44.entities.DiningLocation.list();
+        const foundLocation = locations.find(loc => loc.id === locationId);
+        setLocation(foundLocation);
+        
+        const items = await base44.entities.MenuItem.filter({ dining_location_id: locationId });
+        console.log('Loaded menu items:', items);
+        setMenuItems(items);
+        setIsLoading(false);
+      } catch (error) {
+        console.error('Error loading data:', error);
+        setIsLoading(false);
+      }
+    };
+    loadData();
+  }, [locationId]);
 
   console.log('Menu items data:', menuItems);
   console.log('Loading:', isLoading);
-  console.log('Error:', error);
   console.log('Location ID:', locationId);
   console.log('Location data:', location);
 

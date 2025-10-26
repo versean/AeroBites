@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { base44 } from "../api/base44Client";
-import { useQuery } from "@tanstack/react-query";
 import { Search, MapPin, Clock, Zap, Filter } from "lucide-react";
 import { Input } from "../components/ui/input";
 import {
@@ -15,22 +14,35 @@ import LocationCard from "../components/home/LocationCard";
 export default function HomePage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [filterType, setFilterType] = useState("all");
+  const [locations, setLocations] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const { data: locations, isLoading, error } = useQuery({
-    queryKey: ['dining-locations'],
-    queryFn: () => base44.entities.DiningLocation.list(),
-    initialData: [],
-  });
-
-  console.log('Locations data:', locations);
-  console.log('Is loading:', isLoading);
-  console.log('Error:', error);
+  // Load locations directly
+  useEffect(() => {
+    const loadLocations = async () => {
+      try {
+        console.log('Loading locations...');
+        const result = await base44.entities.DiningLocation.list();
+        console.log('Loaded locations:', result);
+        setLocations(result);
+        setIsLoading(false);
+      } catch (error) {
+        console.error('Error loading locations:', error);
+        setIsLoading(false);
+      }
+    };
+    loadLocations();
+  }, []);
 
   const filteredLocations = locations.filter(location => {
     const matchesSearch = location.name.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesType = filterType === "all" || location.type === filterType;
     return matchesSearch && matchesType;
   });
+
+  console.log('Locations data:', locations);
+  console.log('Is loading:', isLoading);
+  console.log('Filtered locations:', filteredLocations);
 
   return (
     <div className="min-h-screen">

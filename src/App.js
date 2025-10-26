@@ -8,6 +8,7 @@ import CartPage from './Pages/Cart';
 import OrdersPage from './Pages/Orders';
 import OrderDetailPage from './Pages/OrderDetail';
 import ProfilePage from './Pages/Profile';
+import AccountSettings from './Pages/AccountSettings';
 
 // Create a client
 const queryClient = new QueryClient({
@@ -31,6 +32,7 @@ function App() {
             <Route path="/orders" element={<OrdersPage />} />
             <Route path="/order" element={<OrderDetailPage />} />
             <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/account-settings" element={<AccountSettings />} />
           </Routes>
         </Layout>
       </Router>

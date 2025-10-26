@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { base44 } from "../api/base44Client";
-import { useQuery } from "@tanstack/react-query";
 import { Tabs, TabsList, TabsTrigger } from "../components/ui/tabs";
 import { Clock, CheckCircle2, Package } from "lucide-react";
 import OrderCard from "../components/orders/OrderCard";
@@ -8,14 +7,23 @@ import OrderCard from "../components/orders/OrderCard";
 export default function OrdersPage() {
   const [activeTab, setActiveTab] = useState("active");
 
-  const { data: orders, isLoading } = useQuery({
-    queryKey: ['orders'],
-    queryFn: async () => {
-      const user = await base44.auth.me();
-      return base44.entities.Order.filter({ user_email: user.email }, '-created_date');
-    },
-    initialData: [],
-  });
+  const [orders, setOrders] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const loadOrders = async () => {
+      try {
+        const user = await base44.auth.me();
+        const orderData = await base44.entities.Order.filter({ user_email: user.email }, '-created_date');
+        setOrders(orderData);
+        setIsLoading(false);
+      } catch (error) {
+        console.error('Error loading orders:', error);
+        setIsLoading(false);
+      }
+    };
+    loadOrders();
+  }, []);
 
   const activeOrders = orders.filter(order => 
     ["pending", "confirmed", "preparing", "ready", "in_transit"].includes(order.status)
