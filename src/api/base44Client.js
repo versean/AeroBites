@@ -1187,6 +1187,8 @@ class MockBase44Client {
           
           const filteredItems = allMenuItems.filter(item => item.dining_location_id === dining_location_id);
           console.log('Found menu items:', filteredItems.length, 'for location:', dining_location_id);
+          console.log('All menu items count:', allMenuItems.length);
+          console.log('Sample menu items:', allMenuItems.slice(0, 3));
           return filteredItems;
         }
       },

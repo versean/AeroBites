@@ -66,6 +66,8 @@ export default function MenuPage() {
   console.log('Menu items data:', menuItems);
   console.log('Loading:', isLoading);
   console.log('Error:', error);
+  console.log('Location ID:', locationId);
+  console.log('Location data:', location);
 
   useEffect(() => {
     const savedCart = localStorage.getItem('ucsc_cart');
