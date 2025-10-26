@@ -2,7 +2,7 @@
 
 **Your favorite meals — delivered at the speed of flight.**
 
-Meet AeroBites, the world's first drone-powered food delivery app. Order from your favorite local restaurants and watch your meal take flight — literally. Our smart delivery drones soar above traffic to bring you hot, fresh food in record time. With real-time tracking, eco-friendly flights, and ultra-fast delivery, AeroBites makes takeout feel futuristic. Fast. Fresh. From sky to plate.
+Meet AeroBites, the world's first drone-powered food delivery app. Order from your favorite local eateries and watch your meal take flight — literally. Our smart delivery drones soar above traffic to bring you hot, fresh food in record time. With real-time tracking, eco-friendly flights, and ultra-fast delivery, AeroBites makes takeout feel futuristic. Built by college students. For college students.
 
 ## UCSC Eats Implementation 
 
@@ -28,33 +28,9 @@ A comprehensive food delivery app for UCSC students with drone delivery and pick
 - **Backend**: AWS Serverless (Lambda, DynamoDB, API Gateway)
 - **Development**: Create React App, ESLint
 
-## App Structure
+## Dining Locations
 
-```
-src/
-├── Pages/
-│   ├── Home.js          # Main homepage with dining locations
-│   ├── Menu.js          # Menu page for each location
-│   ├── Cart.js          # Shopping cart and checkout
-│   ├── Orders.js        # Order history and tracking
-│   ├── OrderDetail.js   # Individual order details
-│   └── Profile.js       # User profile and settings
-├── Components/
-│   ├── home/            # Homepage components
-│   ├── menu/            # Menu components
-│   ├── cart/            # Cart components
-│   ├── orders/          # Order components
-│   └── ui/              # Reusable UI components
-├── api/
-│   ├── base44Client.js  # Mock API client (development)
-│   └── awsClient.js     # AWS API client (production)
-└── utils/
-    └── utils.js         # Utility functions
-```
-
-## 🍽️ Dining Locations
-
-### Dining Halls (Drone Delivery Available)
+### Dining Halls 
 - Cowell/Stevenson Dining Hall
 - Crown/Merrill Dining Hall  
 - Porter/Kresge Dining Hall
