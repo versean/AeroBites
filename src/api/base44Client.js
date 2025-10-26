@@ -1196,6 +1196,64 @@ class MockBase44Client {
         }
       },
       Order: {
+        list: async () => {
+          // Sample orders for testing
+          return [
+            {
+              id: '1',
+              order_number: 'UCSC-001',
+              user_email: 'student@ucsc.edu',
+              items: [
+                { name: 'Classic Breakfast Burrito', quantity: 1, price: 7.99 },
+                { name: 'Coffee', quantity: 1, price: 2.50 }
+              ],
+              total_amount: 10.49,
+              status: 'preparing',
+              delivery_method: 'drone',
+              delivery_address: 'Cowell College, Room 101',
+              created_date: new Date().toISOString(),
+              estimated_time: '15-20 min'
+            },
+            {
+              id: '2', 
+              order_number: 'UCSC-002',
+              user_email: 'student@ucsc.edu',
+              items: [
+                { name: 'Grilled Chicken Breast', quantity: 1, price: 8.99 },
+                { name: 'Caesar Salad', quantity: 1, price: 5.99 }
+              ],
+              total_amount: 14.98,
+              status: 'in_transit',
+              delivery_method: 'drone',
+              delivery_address: 'Stevenson College, Room 205',
+              created_date: new Date(Date.now() - 300000).toISOString(),
+              estimated_time: '5-10 min'
+            },
+            {
+              id: '3',
+              order_number: 'UCSC-003', 
+              user_email: 'student@ucsc.edu',
+              items: [
+                { name: 'BBQ Ribs', quantity: 1, price: 11.99 },
+                { name: 'Fresh Orange Juice', quantity: 1, price: 3.99 }
+              ],
+              total_amount: 15.98,
+              status: 'delivered',
+              delivery_method: 'pickup',
+              pickup_location: 'Crown/Merrill Dining Hall',
+              created_date: new Date(Date.now() - 1800000).toISOString(),
+              estimated_time: 'Delivered'
+            }
+          ];
+        },
+        filter: async ({ user_email }) => {
+          const orders = await base44.entities.Order.list();
+          return orders.filter(order => order.user_email === user_email);
+        },
+        get: async (orderId) => {
+          const orders = await base44.entities.Order.list();
+          return orders.find(order => order.id === orderId);
+        },
         create: async (orderData) => {
           console.log('Creating order:', orderData);
           // Simulate API call
@@ -1204,32 +1262,6 @@ class MockBase44Client {
               resolve({ id: Date.now().toString(), ...orderData });
             }, 1000);
           });
-        },
-        filter: async (filters, sort) => {
-          // Mock orders data
-          return [
-            {
-              id: '1',
-              order_number: 'UCSC12345678',
-              user_email: 'student@ucsc.edu',
-              delivery_method: 'drone',
-              delivery_address: 'Adams House',
-              status: 'preparing',
-              items: [
-                {
-                  menu_item_id: '1',
-                  menu_item_name: 'Grilled Chicken Breast',
-                  dining_location_name: 'Cowell/Stevenson Dining Hall',
-                  quantity: 1,
-                  price: 8.99
-                }
-              ],
-              total_amount: 11.98,
-              estimated_time: '15-20 minutes',
-              placed_at: new Date(Date.now() - 10 * 60 * 1000).toISOString(),
-              notes: 'Please deliver to front door'
-            }
-          ];
         }
       }
     };

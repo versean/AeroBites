@@ -6,7 +6,7 @@ import { createPageUrl } from "../utils";
 import { ArrowLeft, MapPin, Plane } from "lucide-react";
 import { Badge } from "../components/ui/badge";
 import { format } from "date-fns";
-import DeliveryTracker from "../components/orders/DeliveryTracker";
+import SimpleOrderTracker from "../components/orders/SimpleOrderTracker";
 
 export default function OrderDetailPage() {
   const navigate = useNavigate();
@@ -93,8 +93,8 @@ export default function OrderDetailPage() {
           </div>
         </div>
 
-        {/* Delivery Tracker */}
-        <DeliveryTracker order={order} />
+        {/* Simple Order Tracker */}
+        <SimpleOrderTracker order={order} />
       </div>
     </div>
   );
