@@ -146,21 +146,23 @@ export default function AccountSettings() {
             <CardContent className="space-y-4">
               <div>
                 <Label htmlFor="dorm">College/Dorm</Label>
-                <select
-                  id="dorm"
-                  value={user.deliveryAddress.dorm}
-                  onChange={(e) => setUser({
+                <Select 
+                  value={user.deliveryAddress.dorm} 
+                  onValueChange={(value) => setUser({
                     ...user, 
-                    deliveryAddress: {...user.deliveryAddress, dorm: e.target.value}
+                    deliveryAddress: {...user.deliveryAddress, dorm: value}
                   })}
                   disabled={!isEditing}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                 >
-                  <option value="">Select your college/dorm</option>
-                  {dormOptions.map(dorm => (
-                    <option key={dorm} value={dorm}>{dorm}</option>
-                  ))}
-                </select>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Select your college/dorm" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {dormOptions.map(dorm => (
+                      <SelectItem key={dorm} value={dorm}>{dorm}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
               <div>
                 <Label htmlFor="building">Building Name</Label>
