@@ -3,7 +3,7 @@ import { MapPin, Navigation, Clock, Truck } from "lucide-react";
 
 export default function DeliveryMap({ order, currentStatus }) {
   const [dronePosition, setDronePosition] = useState({ lat: 36.9914, lng: -122.0581 }); // UCSC coordinates
-  const [deliveryPosition] = useState({ lat: 36.9914, lng: -122.0581 }); // Same for demo
+  // const [deliveryPosition] = useState({ lat: 36.9914, lng: -122.0581 }); // Same for demo
   const [distance, setDistance] = useState(0);
   const [eta, setEta] = useState(5);
 

@@ -43,17 +43,35 @@ export default function AccountSettings() {
   };
 
   const dormOptions = [
-    "Cowell College",
-    "Stevenson College", 
-    "Crown College",
-    "Merrill College",
-    "Porter College",
-    "Kresge College",
-    "Oakes College",
-    "Rachel Carson College",
-    "College Nine",
-    "College Ten",
-    "Graduate Student Housing"
+    // Cowell College
+    "Adams House", "Prescott House", "Parkman House", "Beard House", "Parrington House", "Turner House", "Morison House",
+    
+    // Crown College
+    "Maxwell House", "Harvey House", "Galen House", "Galileo House", "Rutherford House", "Descartes House", "Gauss House",
+    
+    // Stevenson College
+    "Lorde-Studds House", "Kochiyama House", "Bulosan House", "Gandhi-Kahlo House", "Chávez-Menchú House", "DuBois House",
+    
+    // Porter College
+    "Casa Primera", "Casa Segunda", "Casa Tercera", "Casa Cuarta", "Casa Quinta", "Casa Sexta", "Casa Séptima", "Casa Octava", "Leonardo House",
+    
+    // Kresge College
+    "Casa Frida Kahlo", "El Hajj Malik & Betty Shabazz", "Harvey Milk House", "Liliuokalani-Minami", "Stephen Biko House", "Hong-Lim House", "Bayit Elie Wiesel",
+    
+    // Rachel Carson College
+    "A-L (Rachel Carson)", "B-L (Rachel Carson)", "C-L (Rachel Carson)", "D-L (Rachel Carson)", 
+    "Garden A (Rachel Carson)", "Garden B (Rachel Carson)", "Garden C (Rachel Carson)", "Garden D (Rachel Carson)",
+    
+    // John R. Lewis College
+    "Ohlone House", "Amnesty House", "Angela Davis House",
+    
+    // Other Housing
+    "Hague House", "Gandhi House", "Geneva House", "Porter House A", "Porter House B",
+    
+    // College Names (for general reference)
+    "Cowell College", "Stevenson College", "Crown College", "Merrill College",
+    "Porter College", "Kresge College", "Oakes College", "Rachel Carson College",
+    "College Nine", "College Ten", "John R. Lewis College", "Graduate Student Housing", "University Apartments"
   ];
 
   return (
