@@ -235,7 +235,7 @@ class MockBase44Client {
         filter: async ({ dining_location_id }) => {
           // Comprehensive menu items data for all dining locations
           const allMenuItems = [
-            // Cowell/Stevenson Dining Hall
+            // Cowell/Stevenson Dining Hall (12 items)
             {
               id: '1',
               dining_location_id: '1',
@@ -252,6 +252,19 @@ class MockBase44Client {
             {
               id: '2',
               dining_location_id: '1',
+              name: 'Pancakes with Syrup',
+              description: 'Fluffy buttermilk pancakes with maple syrup and butter',
+              price: 6.99,
+              category: 'breakfast',
+              meal_period: ['breakfast'],
+              image_url: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400',
+              dietary_info: ['vegetarian'],
+              is_available: true,
+              calories: 420
+            },
+            {
+              id: '3',
+              dining_location_id: '1',
               name: 'Grilled Chicken Breast',
               description: 'Tender grilled chicken with herbs and spices',
               price: 8.99,
@@ -263,7 +276,7 @@ class MockBase44Client {
               calories: 350
             },
             {
-              id: '3',
+              id: '4',
               dining_location_id: '1',
               name: 'Veggie Burger',
               description: 'Plant-based patty with lettuce, tomato, and vegan mayo',
@@ -276,7 +289,7 @@ class MockBase44Client {
               calories: 280
             },
             {
-              id: '4',
+              id: '5',
               dining_location_id: '1',
               name: 'Caesar Salad',
               description: 'Fresh romaine lettuce with parmesan and croutons',
@@ -289,7 +302,7 @@ class MockBase44Client {
               calories: 180
             },
             {
-              id: '5',
+              id: '6',
               dining_location_id: '1',
               name: 'Pasta Primavera',
               description: 'Fresh vegetables with pasta in garlic olive oil',
@@ -302,7 +315,20 @@ class MockBase44Client {
               calories: 320
             },
             {
-              id: '6',
+              id: '7',
+              dining_location_id: '1',
+              name: 'BBQ Ribs',
+              description: 'Slow-cooked ribs with tangy barbecue sauce',
+              price: 11.99,
+              category: 'dinner',
+              meal_period: ['dinner'],
+              image_url: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=400',
+              dietary_info: ['gluten_free'],
+              is_available: true,
+              calories: 580
+            },
+            {
+              id: '8',
               dining_location_id: '1',
               name: 'Coffee',
               description: 'Freshly brewed coffee',
@@ -315,7 +341,20 @@ class MockBase44Client {
               calories: 5
             },
             {
-              id: '7',
+              id: '9',
+              dining_location_id: '1',
+              name: 'Fresh Orange Juice',
+              description: 'Freshly squeezed orange juice',
+              price: 3.99,
+              category: 'beverage',
+              meal_period: ['all_day'],
+              image_url: 'https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=400',
+              dietary_info: ['vegetarian', 'vegan', 'gluten_free'],
+              is_available: true,
+              calories: 110
+            },
+            {
+              id: '10',
               dining_location_id: '1',
               name: 'Chocolate Chip Cookies',
               description: 'Freshly baked cookies with chocolate chips',
@@ -327,23 +366,62 @@ class MockBase44Client {
               is_available: true,
               calories: 250
             },
-
-            // Crown/Merrill Dining Hall
             {
-              id: '8',
+              id: '11',
+              dining_location_id: '1',
+              name: 'Apple Pie',
+              description: 'Homemade apple pie with cinnamon and sugar',
+              price: 4.99,
+              category: 'dessert',
+              meal_period: ['all_day'],
+              image_url: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400',
+              dietary_info: ['vegetarian'],
+              is_available: true,
+              calories: 320
+            },
+            {
+              id: '12',
+              dining_location_id: '1',
+              name: 'Mixed Nuts',
+              description: 'Assorted nuts and dried fruits',
+              price: 4.50,
+              category: 'snack',
+              meal_period: ['all_day'],
+              image_url: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400',
+              dietary_info: ['vegetarian', 'vegan', 'gluten_free'],
+              is_available: true,
+              calories: 180
+            },
+
+            // Crown/Merrill Dining Hall (12 items)
+            {
+              id: '13',
               dining_location_id: '2',
-              name: 'Pancakes',
-              description: 'Fluffy pancakes with maple syrup and butter',
-              price: 6.99,
+              name: 'French Toast',
+              description: 'Thick slices of bread dipped in egg and cinnamon',
+              price: 7.99,
               category: 'breakfast',
               meal_period: ['breakfast'],
               image_url: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400',
               dietary_info: ['vegetarian'],
               is_available: true,
-              calories: 420
+              calories: 480
             },
             {
-              id: '9',
+              id: '14',
+              dining_location_id: '2',
+              name: 'Acai Bowl',
+              description: 'Acai smoothie bowl with granola and fresh berries',
+              price: 8.99,
+              category: 'breakfast',
+              meal_period: ['breakfast'],
+              image_url: 'https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=400',
+              dietary_info: ['vegetarian', 'vegan', 'gluten_free'],
+              is_available: true,
+              calories: 350
+            },
+            {
+              id: '15',
               dining_location_id: '2',
               name: 'Asian Stir Fry',
               description: 'Fresh vegetables and tofu in teriyaki sauce',
@@ -356,7 +434,7 @@ class MockBase44Client {
               calories: 280
             },
             {
-              id: '10',
+              id: '16',
               dining_location_id: '2',
               name: 'Fish Tacos',
               description: 'Grilled fish with cabbage slaw and lime crema',
@@ -369,7 +447,7 @@ class MockBase44Client {
               calories: 380
             },
             {
-              id: '11',
+              id: '17',
               dining_location_id: '2',
               name: 'Quinoa Bowl',
               description: 'Quinoa with roasted vegetables and tahini dressing',
@@ -382,7 +460,59 @@ class MockBase44Client {
               calories: 320
             },
             {
-              id: '12',
+              id: '18',
+              dining_location_id: '2',
+              name: 'Beef Stir Fry',
+              description: 'Tender beef strips with mixed vegetables in soy sauce',
+              price: 10.99,
+              category: 'dinner',
+              meal_period: ['dinner'],
+              image_url: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=400',
+              dietary_info: ['gluten_free'],
+              is_available: true,
+              calories: 420
+            },
+            {
+              id: '19',
+              dining_location_id: '2',
+              name: 'Teriyaki Chicken',
+              description: 'Grilled chicken with teriyaki glaze and steamed rice',
+              price: 9.99,
+              category: 'dinner',
+              meal_period: ['dinner'],
+              image_url: 'https://images.unsplash.com/photo-1532550907401-a273c8c1c043?w=400',
+              dietary_info: ['gluten_free'],
+              is_available: true,
+              calories: 450
+            },
+            {
+              id: '20',
+              dining_location_id: '2',
+              name: 'Green Tea',
+              description: 'Premium green tea with antioxidants',
+              price: 2.99,
+              category: 'beverage',
+              meal_period: ['all_day'],
+              image_url: 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400',
+              dietary_info: ['vegetarian', 'vegan', 'gluten_free'],
+              is_available: true,
+              calories: 2
+            },
+            {
+              id: '21',
+              dining_location_id: '2',
+              name: 'Smoothie Bowl',
+              description: 'Fruit smoothie with granola and coconut flakes',
+              price: 6.99,
+              category: 'beverage',
+              meal_period: ['all_day'],
+              image_url: 'https://images.unsplash.com/photo-1553530666-ba11c7e2ea85?w=400',
+              dietary_info: ['vegetarian', 'vegan', 'gluten_free'],
+              is_available: true,
+              calories: 200
+            },
+            {
+              id: '22',
               dining_location_id: '2',
               name: 'Fresh Fruit',
               description: 'Seasonal fresh fruit selection',
@@ -394,10 +524,36 @@ class MockBase44Client {
               is_available: true,
               calories: 80
             },
-
-            // Porter/Kresge Dining Hall
             {
-              id: '13',
+              id: '23',
+              dining_location_id: '2',
+              name: 'Energy Bars',
+              description: 'Homemade energy bars with nuts and dates',
+              price: 3.99,
+              category: 'snack',
+              meal_period: ['all_day'],
+              image_url: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400',
+              dietary_info: ['vegetarian', 'vegan', 'gluten_free'],
+              is_available: true,
+              calories: 220
+            },
+            {
+              id: '24',
+              dining_location_id: '2',
+              name: 'Tiramisu',
+              description: 'Classic Italian dessert with coffee and mascarpone',
+              price: 5.99,
+              category: 'dessert',
+              meal_period: ['all_day'],
+              image_url: 'https://images.unsplash.com/photo-1571877227200-a63c7aee83d0?w=400',
+              dietary_info: ['vegetarian'],
+              is_available: true,
+              calories: 380
+            },
+
+            // Porter/Kresge Dining Hall (12 items)
+            {
+              id: '25',
               dining_location_id: '3',
               name: 'Organic Oatmeal',
               description: 'Steel-cut oats with berries and nuts',
@@ -410,20 +566,20 @@ class MockBase44Client {
               calories: 280
             },
             {
-              id: '14',
+              id: '26',
               dining_location_id: '3',
-              name: 'Sustainable Salmon',
-              description: 'Wild-caught salmon with seasonal vegetables',
-              price: 12.99,
-              category: 'dinner',
-              meal_period: ['dinner'],
-              image_url: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=400',
-              dietary_info: ['gluten_free'],
+              name: 'Avocado Toast',
+              description: 'Smashed avocado on sourdough with hemp seeds',
+              price: 6.99,
+              category: 'breakfast',
+              meal_period: ['breakfast'],
+              image_url: 'https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?w=400',
+              dietary_info: ['vegetarian', 'vegan'],
               is_available: true,
-              calories: 420
+              calories: 320
             },
             {
-              id: '15',
+              id: '27',
               dining_location_id: '3',
               name: 'Kale Caesar Salad',
               description: 'Organic kale with vegan caesar dressing',
@@ -436,7 +592,46 @@ class MockBase44Client {
               calories: 150
             },
             {
-              id: '16',
+              id: '28',
+              dining_location_id: '3',
+              name: 'Mediterranean Wrap',
+              description: 'Hummus, vegetables, and falafel in whole wheat wrap',
+              price: 7.99,
+              category: 'lunch',
+              meal_period: ['lunch', 'dinner'],
+              image_url: 'https://images.unsplash.com/photo-1565299585323-38174c4a6b4a?w=400',
+              dietary_info: ['vegetarian', 'vegan'],
+              is_available: true,
+              calories: 380
+            },
+            {
+              id: '29',
+              dining_location_id: '3',
+              name: 'Sustainable Salmon',
+              description: 'Wild-caught salmon with seasonal vegetables',
+              price: 12.99,
+              category: 'dinner',
+              meal_period: ['dinner'],
+              image_url: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=400',
+              dietary_info: ['gluten_free'],
+              is_available: true,
+              calories: 420
+            },
+            {
+              id: '30',
+              dining_location_id: '3',
+              name: 'Mushroom Risotto',
+              description: 'Creamy arborio rice with wild mushrooms',
+              price: 9.99,
+              category: 'dinner',
+              meal_period: ['dinner'],
+              image_url: 'https://images.unsplash.com/photo-1476124369491-e7addf5db371?w=400',
+              dietary_info: ['vegetarian'],
+              is_available: true,
+              calories: 450
+            },
+            {
+              id: '31',
               dining_location_id: '3',
               name: 'Green Smoothie',
               description: 'Spinach, banana, and mango smoothie',
@@ -448,10 +643,75 @@ class MockBase44Client {
               is_available: true,
               calories: 120
             },
-
-            // College Nine/Ten Dining Hall
             {
-              id: '17',
+              id: '32',
+              dining_location_id: '3',
+              name: 'Kombucha',
+              description: 'Fermented tea with probiotics',
+              price: 3.99,
+              category: 'beverage',
+              meal_period: ['all_day'],
+              image_url: 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400',
+              dietary_info: ['vegetarian', 'vegan', 'gluten_free'],
+              is_available: true,
+              calories: 30
+            },
+            {
+              id: '33',
+              dining_location_id: '3',
+              name: 'Trail Mix',
+              description: 'Organic nuts, seeds, and dried fruit',
+              price: 4.50,
+              category: 'snack',
+              meal_period: ['all_day'],
+              image_url: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400',
+              dietary_info: ['vegetarian', 'vegan', 'gluten_free'],
+              is_available: true,
+              calories: 200
+            },
+            {
+              id: '34',
+              dining_location_id: '3',
+              name: 'Veggie Chips',
+              description: 'Baked vegetable chips with sea salt',
+              price: 3.99,
+              category: 'snack',
+              meal_period: ['all_day'],
+              image_url: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400',
+              dietary_info: ['vegetarian', 'vegan', 'gluten_free'],
+              is_available: true,
+              calories: 150
+            },
+            {
+              id: '35',
+              dining_location_id: '3',
+              name: 'Vegan Cheesecake',
+              description: 'Cashew-based cheesecake with berry compote',
+              price: 6.99,
+              category: 'dessert',
+              meal_period: ['all_day'],
+              image_url: 'https://images.unsplash.com/photo-1571877227200-a63c7aee83d0?w=400',
+              dietary_info: ['vegetarian', 'vegan', 'gluten_free'],
+              is_available: true,
+              calories: 280
+            },
+            {
+              id: '36',
+              dining_location_id: '3',
+              name: 'Chocolate Avocado Mousse',
+              description: 'Rich chocolate mousse made with avocado',
+              price: 5.99,
+              category: 'dessert',
+              meal_period: ['all_day'],
+              image_url: 'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=400',
+              dietary_info: ['vegetarian', 'vegan', 'gluten_free'],
+              is_available: true,
+              calories: 220
+            },
+
+            // College Nine/Ten Dining Hall (12 items)
+            {
+              id: '37',
               dining_location_id: '4',
               name: 'International Breakfast',
               description: 'Global breakfast options including congee and croissants',
@@ -464,7 +724,20 @@ class MockBase44Client {
               calories: 450
             },
             {
-              id: '18',
+              id: '38',
+              dining_location_id: '4',
+              name: 'Dim Sum Platter',
+              description: 'Assorted steamed dumplings and buns',
+              price: 9.99,
+              category: 'breakfast',
+              meal_period: ['breakfast'],
+              image_url: 'https://images.unsplash.com/photo-1551218808-94e220e084d2?w=400',
+              dietary_info: [],
+              is_available: true,
+              calories: 380
+            },
+            {
+              id: '39',
               dining_location_id: '4',
               name: 'Curry Bowl',
               description: 'Spicy curry with rice and naan bread',
@@ -477,7 +750,20 @@ class MockBase44Client {
               calories: 380
             },
             {
-              id: '19',
+              id: '40',
+              dining_location_id: '4',
+              name: 'Pad Thai',
+              description: 'Stir-fried rice noodles with shrimp and vegetables',
+              price: 10.99,
+              category: 'lunch',
+              meal_period: ['lunch', 'dinner'],
+              image_url: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=400',
+              dietary_info: ['gluten_free'],
+              is_available: true,
+              calories: 420
+            },
+            {
+              id: '41',
               dining_location_id: '4',
               name: 'Ramen Bowl',
               description: 'Authentic ramen with soft-boiled egg and vegetables',
@@ -490,7 +776,20 @@ class MockBase44Client {
               calories: 520
             },
             {
-              id: '20',
+              id: '42',
+              dining_location_id: '4',
+              name: 'Sushi Platter',
+              description: 'Fresh sushi rolls with wasabi and pickled ginger',
+              price: 12.99,
+              category: 'dinner',
+              meal_period: ['dinner'],
+              image_url: 'https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=400',
+              dietary_info: ['gluten_free'],
+              is_available: true,
+              calories: 350
+            },
+            {
+              id: '43',
               dining_location_id: '4',
               name: 'Bubble Tea',
               description: 'Tapioca pearls in sweet tea',
@@ -502,113 +801,386 @@ class MockBase44Client {
               is_available: true,
               calories: 180
             },
-
-            // Oakes Cafe
             {
-              id: '21',
-              dining_location_id: '5',
-              name: 'Artisan Coffee',
-              description: 'Single-origin coffee beans, freshly roasted',
-              price: 3.50,
+              id: '44',
+              dining_location_id: '4',
+              name: 'Thai Iced Tea',
+              description: 'Sweet Thai tea with condensed milk',
+              price: 3.99,
               category: 'beverage',
               meal_period: ['all_day'],
-              image_url: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400',
-              dietary_info: ['vegan'],
+              image_url: 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400',
+              dietary_info: ['vegetarian'],
               is_available: true,
-              calories: 5
+              calories: 150
             },
             {
-              id: '22',
-              dining_location_id: '5',
-              name: 'Croissant',
-              description: 'Buttery, flaky French pastry',
+              id: '45',
+              dining_location_id: '4',
+              name: 'Mochi Ice Cream',
+              description: 'Japanese rice cake with ice cream filling',
+              price: 4.99,
+              category: 'dessert',
+              meal_period: ['all_day'],
+              image_url: 'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=400',
+              dietary_info: ['vegetarian'],
+              is_available: true,
+              calories: 120
+            },
+            {
+              id: '46',
+              dining_location_id: '4',
+              name: 'Fortune Cookies',
+              description: 'Crispy cookies with fortune messages',
+              price: 2.99,
+              category: 'dessert',
+              meal_period: ['all_day'],
+              image_url: 'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=400',
+              dietary_info: ['vegetarian'],
+              is_available: true,
+              calories: 50
+            },
+            {
+              id: '47',
+              dining_location_id: '4',
+              name: 'Edamame',
+              description: 'Steamed soybeans with sea salt',
               price: 3.99,
+              category: 'snack',
+              meal_period: ['all_day'],
+              image_url: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400',
+              dietary_info: ['vegetarian', 'vegan', 'gluten_free'],
+              is_available: true,
+              calories: 100
+            },
+            {
+              id: '48',
+              dining_location_id: '4',
+              name: 'Seaweed Salad',
+              description: 'Fresh seaweed with sesame dressing',
+              price: 4.50,
+              category: 'snack',
+              meal_period: ['all_day'],
+              image_url: 'https://images.unsplash.com/photo-1546793665-c74683f339c1?w=400',
+              dietary_info: ['vegetarian', 'vegan', 'gluten_free'],
+              is_available: true,
+              calories: 60
+            },
+
+            // Oakes Cafe (12 items)
+            {
+              id: '49',
+              dining_location_id: '5',
+              name: 'Bagel with Cream Cheese',
+              description: 'Fresh bagel with cream cheese and lox',
+              price: 5.99,
               category: 'breakfast',
-              meal_period: ['breakfast', 'all_day'],
-              image_url: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=400',
+              meal_period: ['breakfast'],
+              image_url: 'https://images.unsplash.com/photo-1551218808-94e220e084d2?w=400',
+              dietary_info: ['vegetarian'],
+              is_available: true,
+              calories: 320
+            },
+            {
+              id: '50',
+              dining_location_id: '5',
+              name: 'Yogurt Parfait',
+              description: 'Greek yogurt with granola and berries',
+              price: 6.99,
+              category: 'breakfast',
+              meal_period: ['breakfast'],
+              image_url: 'https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=400',
               dietary_info: ['vegetarian'],
               is_available: true,
               calories: 280
             },
             {
-              id: '23',
+              id: '51',
               dining_location_id: '5',
-              name: 'Avocado Toast',
-              description: 'Smashed avocado on sourdough with sea salt',
-              price: 6.99,
-              category: 'breakfast',
-              meal_period: ['breakfast', 'lunch'],
-              image_url: 'https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?w=400',
+              name: 'Turkey Sandwich',
+              description: 'Sliced turkey with lettuce, tomato, and mayo',
+              price: 7.99,
+              category: 'lunch',
+              meal_period: ['lunch', 'dinner'],
+              image_url: 'https://images.unsplash.com/photo-1539252554453-80ab65ce3586?w=400',
+              dietary_info: [],
+              is_available: true,
+              calories: 380
+            },
+            {
+              id: '52',
+              dining_location_id: '5',
+              name: 'Caprese Panini',
+              description: 'Mozzarella, tomato, and basil on ciabatta',
+              price: 8.99,
+              category: 'lunch',
+              meal_period: ['lunch', 'dinner'],
+              image_url: 'https://images.unsplash.com/photo-1539252554453-80ab65ce3586?w=400',
+              dietary_info: ['vegetarian'],
+              is_available: true,
+              calories: 420
+            },
+            {
+              id: '53',
+              dining_location_id: '5',
+              name: 'Chicken Caesar Wrap',
+              description: 'Grilled chicken with caesar dressing in tortilla',
+              price: 8.50,
+              category: 'dinner',
+              meal_period: ['dinner'],
+              image_url: 'https://images.unsplash.com/photo-1539252554453-80ab65ce3586?w=400',
+              dietary_info: ['gluten_free'],
+              is_available: true,
+              calories: 450
+            },
+            {
+              id: '54',
+              dining_location_id: '5',
+              name: 'Veggie Wrap',
+              description: 'Fresh vegetables with hummus in spinach wrap',
+              price: 7.50,
+              category: 'dinner',
+              meal_period: ['dinner'],
+              image_url: 'https://images.unsplash.com/photo-1539252554453-80ab65ce3586?w=400',
               dietary_info: ['vegetarian', 'vegan'],
               is_available: true,
               calories: 320
             },
             {
-              id: '24',
+              id: '55',
               dining_location_id: '5',
-              name: 'Muffin',
-              description: 'Freshly baked blueberry muffin',
-              price: 2.99,
+              name: 'Latte',
+              description: 'Espresso with steamed milk',
+              price: 4.50,
+              category: 'beverage',
+              meal_period: ['all_day'],
+              image_url: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400',
+              dietary_info: ['vegetarian'],
+              is_available: true,
+              calories: 120
+            },
+            {
+              id: '56',
+              dining_location_id: '5',
+              name: 'Chai Tea',
+              description: 'Spiced tea with milk and honey',
+              price: 3.99,
+              category: 'beverage',
+              meal_period: ['all_day'],
+              image_url: 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400',
+              dietary_info: ['vegetarian'],
+              is_available: true,
+              calories: 80
+            },
+            {
+              id: '57',
+              dining_location_id: '5',
+              name: 'Muffins',
+              description: 'Fresh baked muffins in various flavors',
+              price: 3.50,
               category: 'snack',
               meal_period: ['all_day'],
-              image_url: 'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=400',
+              image_url: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400',
               dietary_info: ['vegetarian'],
               is_available: true,
               calories: 200
             },
-
-            // Rachel Carson Coffee House
             {
-              id: '25',
-              dining_location_id: '6',
-              name: 'Organic Coffee',
-              description: 'Fair-trade organic coffee',
-              price: 3.25,
-              category: 'beverage',
+              id: '58',
+              dining_location_id: '5',
+              name: 'Pretzel',
+              description: 'Soft pretzel with mustard',
+              price: 3.99,
+              category: 'snack',
               meal_period: ['all_day'],
-              image_url: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400',
-              dietary_info: ['vegan'],
-              is_available: true,
-              calories: 5
-            },
-            {
-              id: '26',
-              dining_location_id: '6',
-              name: 'Vegan Pastry',
-              description: 'Plant-based croissant with seasonal jam',
-              price: 4.50,
-              category: 'breakfast',
-              meal_period: ['breakfast', 'all_day'],
-              image_url: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=400',
-              dietary_info: ['vegetarian', 'vegan'],
+              image_url: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400',
+              dietary_info: ['vegetarian'],
               is_available: true,
               calories: 250
             },
             {
-              id: '27',
+              id: '59',
+              dining_location_id: '5',
+              name: 'Cheesecake Slice',
+              description: 'New York style cheesecake',
+              price: 5.99,
+              category: 'dessert',
+              meal_period: ['all_day'],
+              image_url: 'https://images.unsplash.com/photo-1571877227200-a63c7aee83d0?w=400',
+              dietary_info: ['vegetarian'],
+              is_available: true,
+              calories: 350
+            },
+            {
+              id: '60',
+              dining_location_id: '5',
+              name: 'Brownie',
+              description: 'Chocolate brownie with nuts',
+              price: 4.50,
+              category: 'dessert',
+              meal_period: ['all_day'],
+              image_url: 'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=400',
+              dietary_info: ['vegetarian'],
+              is_available: true,
+              calories: 280
+            },
+
+            // Rachel Carson Coffee House (12 items)
+            {
+              id: '61',
               dining_location_id: '6',
-              name: 'Acai Bowl',
-              description: 'Acai smoothie bowl with granola and berries',
-              price: 8.99,
+              name: 'Croissant',
+              description: 'Buttery French croissant',
+              price: 3.99,
               category: 'breakfast',
-              meal_period: ['breakfast', 'lunch'],
-              image_url: 'https://images.unsplash.com/photo-1511690743698-d9d85f2fbf38?w=400',
-              dietary_info: ['vegetarian', 'vegan', 'gluten_free'],
+              meal_period: ['breakfast'],
+              image_url: 'https://images.unsplash.com/photo-1551218808-94e220e084d2?w=400',
+              dietary_info: ['vegetarian'],
               is_available: true,
               calories: 280
             },
             {
-              id: '28',
+              id: '62',
               dining_location_id: '6',
-              name: 'Herbal Tea',
-              description: 'Selection of organic herbal teas',
-              price: 2.75,
+              name: 'Eggs Benedict',
+              description: 'Poached eggs on English muffin with hollandaise',
+              price: 9.99,
+              category: 'breakfast',
+              meal_period: ['breakfast'],
+              image_url: 'https://images.unsplash.com/photo-1551218808-94e220e084d2?w=400',
+              dietary_info: ['vegetarian'],
+              is_available: true,
+              calories: 520
+            },
+            {
+              id: '63',
+              dining_location_id: '6',
+              name: 'Club Sandwich',
+              description: 'Triple decker with turkey, bacon, and avocado',
+              price: 9.99,
+              category: 'lunch',
+              meal_period: ['lunch', 'dinner'],
+              image_url: 'https://images.unsplash.com/photo-1539252554453-80ab65ce3586?w=400',
+              dietary_info: [],
+              is_available: true,
+              calories: 580
+            },
+            {
+              id: '64',
+              dining_location_id: '6',
+              name: 'Grilled Cheese',
+              description: 'Three cheese grilled sandwich with tomato soup',
+              price: 7.99,
+              category: 'lunch',
+              meal_period: ['lunch', 'dinner'],
+              image_url: 'https://images.unsplash.com/photo-1539252554453-80ab65ce3586?w=400',
+              dietary_info: ['vegetarian'],
+              is_available: true,
+              calories: 450
+            },
+            {
+              id: '65',
+              dining_location_id: '6',
+              name: 'Beef Stroganoff',
+              description: 'Tender beef in creamy mushroom sauce over noodles',
+              price: 11.99,
+              category: 'dinner',
+              meal_period: ['dinner'],
+              image_url: 'https://images.unsplash.com/photo-1476124369491-e7addf5db371?w=400',
+              dietary_info: [],
+              is_available: true,
+              calories: 520
+            },
+            {
+              id: '66',
+              dining_location_id: '6',
+              name: 'Mac and Cheese',
+              description: 'Creamy macaroni and cheese with breadcrumbs',
+              price: 8.99,
+              category: 'dinner',
+              meal_period: ['dinner'],
+              image_url: 'https://images.unsplash.com/photo-1621996346565-e3dbc353d946?w=400',
+              dietary_info: ['vegetarian'],
+              is_available: true,
+              calories: 480
+            },
+            {
+              id: '67',
+              dining_location_id: '6',
+              name: 'Cappuccino',
+              description: 'Espresso with steamed milk foam',
+              price: 4.99,
               category: 'beverage',
               meal_period: ['all_day'],
-              image_url: 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400',
-              dietary_info: ['vegetarian', 'vegan', 'gluten_free'],
+              image_url: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400',
+              dietary_info: ['vegetarian'],
               is_available: true,
-              calories: 0
+              calories: 80
+            },
+            {
+              id: '68',
+              dining_location_id: '6',
+              name: 'Hot Chocolate',
+              description: 'Rich hot chocolate with whipped cream',
+              price: 3.99,
+              category: 'beverage',
+              meal_period: ['all_day'],
+              image_url: 'https://images.unsplash.com/photo-1571934811356-5cc061b6821f?w=400',
+              dietary_info: ['vegetarian'],
+              is_available: true,
+              calories: 200
+            },
+            {
+              id: '69',
+              dining_location_id: '6',
+              name: 'Scones',
+              description: 'Fresh baked scones with jam and cream',
+              price: 4.50,
+              category: 'snack',
+              meal_period: ['all_day'],
+              image_url: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400',
+              dietary_info: ['vegetarian'],
+              is_available: true,
+              calories: 220
+            },
+            {
+              id: '70',
+              dining_location_id: '6',
+              name: 'Fruit Tart',
+              description: 'Pastry shell with custard and fresh fruit',
+              price: 5.99,
+              category: 'dessert',
+              meal_period: ['all_day'],
+              image_url: 'https://images.unsplash.com/photo-1571877227200-a63c7aee83d0?w=400',
+              dietary_info: ['vegetarian'],
+              is_available: true,
+              calories: 300
+            },
+            {
+              id: '71',
+              dining_location_id: '6',
+              name: 'Chocolate Cake',
+              description: 'Rich chocolate layer cake',
+              price: 6.99,
+              category: 'dessert',
+              meal_period: ['all_day'],
+              image_url: 'https://images.unsplash.com/photo-1571877227200-a63c7aee83d0?w=400',
+              dietary_info: ['vegetarian'],
+              is_available: true,
+              calories: 420
+            },
+            {
+              id: '72',
+              dining_location_id: '6',
+              name: 'Granola Bars',
+              description: 'Homemade granola bars with nuts and dried fruit',
+              price: 3.99,
+              category: 'snack',
+              meal_period: ['all_day'],
+              image_url: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400',
+              dietary_info: ['vegetarian', 'vegan'],
+              is_available: true,
+              calories: 180
             }
           ];
           
