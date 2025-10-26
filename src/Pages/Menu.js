@@ -16,6 +16,8 @@ export default function MenuPage() {
   const urlParams = new URLSearchParams(window.location.search);
   const locationId = urlParams.get('location');
   
+  console.log('Location ID from URL:', locationId);
+  
   const [searchQuery, setSearchQuery] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("all");
   const [cart, setCart] = useState([]);
@@ -54,12 +56,16 @@ export default function MenuPage() {
     enabled: !!locationId,
   });
 
-  const { data: menuItems, isLoading } = useQuery({
+  const { data: menuItems, isLoading, error } = useQuery({
     queryKey: ['menu-items', locationId],
     queryFn: () => base44.entities.MenuItem.filter({ dining_location_id: locationId }),
     initialData: [],
     enabled: !!locationId,
   });
+
+  console.log('Menu items data:', menuItems);
+  console.log('Loading:', isLoading);
+  console.log('Error:', error);
 
   useEffect(() => {
     const savedCart = localStorage.getItem('ucsc_cart');

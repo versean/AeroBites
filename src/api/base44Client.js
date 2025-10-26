@@ -233,6 +233,7 @@ class MockBase44Client {
       },
       MenuItem: {
         filter: async ({ dining_location_id }) => {
+          console.log('Filtering menu items for location:', dining_location_id);
           // Comprehensive menu items data for all dining locations
           const allMenuItems = [
             // Cowell/Stevenson Dining Hall (12 items)
@@ -1184,7 +1185,9 @@ class MockBase44Client {
             }
           ];
           
-          return allMenuItems.filter(item => item.dining_location_id === dining_location_id);
+          const filteredItems = allMenuItems.filter(item => item.dining_location_id === dining_location_id);
+          console.log('Found menu items:', filteredItems.length, 'for location:', dining_location_id);
+          return filteredItems;
         }
       },
       Order: {
