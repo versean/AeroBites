@@ -165,7 +165,7 @@ export default function CartPage() {
                       </div>
                       <div className="flex-1">
                         <p className="font-semibold text-gray-900">Drone Delivery</p>
-                        <p className="text-sm text-gray-500">15-20 minutes • $2.99 fee</p>
+                        <p className="text-sm text-gray-500">5 minutes • $2.99 fee</p>
                       </div>
                     </Label>
                   </div>

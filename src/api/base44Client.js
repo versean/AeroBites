@@ -1212,7 +1212,7 @@ class MockBase44Client {
               delivery_method: 'drone',
               delivery_address: 'Cowell College, Room 101',
               created_date: new Date().toISOString(),
-              estimated_time: '15-20 min'
+              estimated_time: '5 min'
             },
             {
               id: '2', 
@@ -1227,7 +1227,7 @@ class MockBase44Client {
               delivery_method: 'drone',
               delivery_address: 'Stevenson College, Room 205',
               created_date: new Date(Date.now() - 300000).toISOString(),
-              estimated_time: '5-10 min'
+              estimated_time: '2 min'
             },
             {
               id: '3',

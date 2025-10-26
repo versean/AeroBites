@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { MapPin, Clock, CheckCircle, Truck, Home, Package } from "lucide-react";
+import DeliveryMap from "./DeliveryMap";
 
 export default function SimpleOrderTracker({ order }) {
   const [currentStatus, setCurrentStatus] = useState(order.status);
@@ -136,6 +137,11 @@ export default function SimpleOrderTracker({ order }) {
             );
           })}
         </div>
+      </div>
+
+      {/* Delivery Map */}
+      <div className="mt-6">
+        <DeliveryMap order={order} currentStatus={currentStatus} />
       </div>
     </div>
   );
