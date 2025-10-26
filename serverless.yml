@@ -1,0 +1,155 @@
+service: ucsc-eats-api
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-west-2
+  stage: ${opt:stage, 'dev'}
+  environment:
+    DINING_LOCATIONS_TABLE: ${self:service}-dining-locations-${self:provider.stage}
+    MENU_ITEMS_TABLE: ${self:service}-menu-items-${self:provider.stage}
+    ORDERS_TABLE: ${self:service}-orders-${self:provider.stage}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource:
+        - "arn:aws:dynamodb:${self:provider.region}:*:table/${self:service}-dining-locations-${self:provider.stage}"
+        - "arn:aws:dynamodb:${self:provider.region}:*:table/${self:service}-menu-items-${self:provider.stage}"
+        - "arn:aws:dynamodb:${self:provider.region}:*:table/${self:service}-orders-${self:provider.stage}"
+
+functions:
+  # Dining Locations API
+  getDiningLocations:
+    handler: src/handlers/diningLocations.getAll
+    events:
+      - http:
+          path: /dining-locations
+          method: get
+          cors: true
+  getDiningLocation:
+    handler: src/handlers/diningLocations.getById
+    events:
+      - http:
+          path: /dining-locations/{id}
+          method: get
+          cors: true
+
+  # Menu Items API
+  getMenuItems:
+    handler: src/handlers/menuItems.getByLocation
+    events:
+      - http:
+          path: /menu-items
+          method: get
+          cors: true
+  getMenuItem:
+    handler: src/handlers/menuItems.getById
+    events:
+      - http:
+          path: /menu-items/{id}
+          method: get
+          cors: true
+
+  # Orders API
+  createOrder:
+    handler: src/handlers/orders.create
+    events:
+      - http:
+          path: /orders
+          method: post
+          cors: true
+  getOrders:
+    handler: src/handlers/orders.getByUser
+    events:
+      - http:
+          path: /orders
+          method: get
+          cors: true
+  getOrder:
+    handler: src/handlers/orders.getById
+    events:
+      - http:
+          path: /orders/{id}
+          method: get
+          cors: true
+
+  # Data Migration
+  migrateData:
+    handler: src/handlers/migration.migrateData
+    events:
+      - http:
+          path: /migrate-data
+          method: post
+          cors: true
+
+resources:
+  Resources:
+    # Dining Locations Table
+    DiningLocationsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:service}-dining-locations-${self:provider.stage}
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+
+    # Menu Items Table
+    MenuItemsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:service}-menu-items-${self:provider.stage}
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+          - AttributeName: dining_location_id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        GlobalSecondaryIndexes:
+          - IndexName: LocationIndex
+            KeySchema:
+              - AttributeName: dining_location_id
+                KeyType: HASH
+            Projection:
+              ProjectionType: ALL
+
+    # Orders Table
+    OrdersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:service}-orders-${self:provider.stage}
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+          - AttributeName: user_email
+            AttributeType: S
+          - AttributeName: created_at
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        GlobalSecondaryIndexes:
+          - IndexName: UserIndex
+            KeySchema:
+              - AttributeName: user_email
+                KeyType: HASH
+              - AttributeName: created_at
+                KeyType: RANGE
+            Projection:
+              ProjectionType: ALL
+
+plugins:
+  - serverless-offline

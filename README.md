@@ -1,0 +1,288 @@
+# UCSC Eats 🍽️
+
+A comprehensive food delivery app for UCSC students with drone delivery and pickup options.
+
+## 🚀 Features
+
+- **20+ Dining Locations** - All major UCSC dining halls, cafes, and markets
+- **28+ Menu Items** - Diverse food options with dietary restrictions
+- **Drone Delivery** - Fast 15-20 minute delivery to campus locations
+- **Pickup Options** - Traditional pickup for cafes and markets
+- **Real-time Order Tracking** - Track your order from kitchen to delivery
+- **Dietary Filters** - Vegetarian, vegan, gluten-free, halal options
+- **Meal Period Filtering** - Breakfast, lunch, dinner, all-day availability
+- **Responsive Design** - Works perfectly on mobile and desktop
+
+## 🏗️ Tech Stack
+
+- **Frontend**: React 18, React Router, TanStack Query
+- **Styling**: Tailwind CSS, Framer Motion
+- **Icons**: Lucide React
+- **State Management**: React Query for server state
+- **Backend**: AWS Serverless (Lambda, DynamoDB, API Gateway)
+- **Development**: Create React App, ESLint
+
+## 📱 App Structure
+
+```
+src/
+├── Pages/
+│   ├── Home.js          # Main homepage with dining locations
+│   ├── Menu.js          # Menu page for each location
+│   ├── Cart.js          # Shopping cart and checkout
+│   ├── Orders.js        # Order history and tracking
+│   ├── OrderDetail.js   # Individual order details
+│   └── Profile.js       # User profile and settings
+├── Components/
+│   ├── home/            # Homepage components
+│   ├── menu/            # Menu components
+│   ├── cart/            # Cart components
+│   ├── orders/          # Order components
+│   └── ui/              # Reusable UI components
+├── api/
+│   ├── base44Client.js  # Mock API client (development)
+│   └── awsClient.js     # AWS API client (production)
+└── utils/
+    └── utils.js         # Utility functions
+```
+
+## 🍽️ Dining Locations
+
+### Dining Halls (Drone Delivery Available)
+- Cowell/Stevenson Dining Hall
+- Crown/Merrill Dining Hall  
+- Porter/Kresge Dining Hall
+- College Nine/Ten Dining Hall
+
+### Cafes & Markets
+- Oakes Cafe
+- Rachel Carson Coffee House
+- McHenry Library Cafe
+- Science & Engineering Library Cafe
+- Quarry Plaza Market
+- Bay Tree Bookstore Cafe
+- Music Center Cafe
+- Engineering 2 Cafe
+- Social Sciences Cafe
+- Natural Sciences Cafe
+- Student Union Cafe
+- Rec Center Smoothie Bar
+- East Field House Cafe
+- West Field House Cafe
+- Campus Store Snack Bar
+- Graduate Student Lounge Cafe
+
+## 🍕 Menu Categories
+
+- **Breakfast**: Pancakes, burritos, oatmeal, acai bowls
+- **Lunch**: Burgers, salads, stir-fry, tacos
+- **Dinner**: Pasta, salmon, ramen, curry
+- **Beverages**: Coffee, smoothies, bubble tea, herbal tea
+- **Snacks**: Cookies, muffins, fresh fruit
+- **Desserts**: Chocolate chip cookies, vegan pastries
+
+## 🚁 Delivery Options
+
+### Drone Delivery
+- **Available for**: Dining halls, Student Union, Quarry Plaza Market
+- **Delivery Time**: 15-20 minutes
+- **Coverage**: All campus locations
+- **Features**: Real-time tracking, weather-resistant
+
+### Pickup
+- **Available for**: All locations
+- **Pickup Time**: 10-15 minutes
+- **Locations**: Campus cafes, markets, dining halls
+
+## 🛠️ Development Setup
+
+### Prerequisites
+- Node.js 18+
+- npm or yarn
+
+### Installation
+```bash
+# Clone the repository
+git clone <repository-url>
+cd ucsc-eats
+
+# Install dependencies
+npm install
+
+# Start development server
+npm start
+```
+
+### Environment Setup
+```bash
+# Copy environment file
+cp env.example .env
+
+# Update with your API Gateway URL (for AWS deployment)
+REACT_APP_API_URL=https://your-api-gateway-url.amazonaws.com/dev
+```
+
+## ☁️ AWS Deployment
+
+### Prerequisites
+- AWS Account
+- AWS CLI configured
+- Serverless Framework
+
+### Deploy Backend
+```bash
+# Install serverless dependencies
+npm install -g serverless
+
+# Deploy to AWS
+serverless deploy --stage dev
+
+# Migrate data
+serverless invoke --function migrateData
+```
+
+### AWS Resources Created
+- **DynamoDB Tables**: Dining locations, menu items, orders
+- **Lambda Functions**: 8 serverless functions
+- **API Gateway**: REST API with CORS
+- **IAM Roles**: Proper permissions for Lambda functions
+
+## 📊 Data Structure
+
+### Dining Location
+```json
+{
+  "id": "1",
+  "name": "Cowell/Stevenson Dining Hall",
+  "type": "dining_hall",
+  "description": "Main dining hall serving breakfast, lunch, and dinner",
+  "image_url": "https://images.unsplash.com/photo-1567521464027-f127ff144326?w=800",
+  "hours": "7:00 AM - 9:00 PM",
+  "location": "Cowell/Stevenson",
+  "is_open": true,
+  "supports_drone": true
+}
+```
+
+### Menu Item
+```json
+{
+  "id": "1",
+  "dining_location_id": "1",
+  "name": "Classic Breakfast Burrito",
+  "description": "Scrambled eggs, bacon, cheese, and hash browns wrapped in a tortilla",
+  "price": 7.99,
+  "category": "breakfast",
+  "meal_period": ["breakfast"],
+  "image_url": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400",
+  "dietary_info": [],
+  "is_available": true,
+  "calories": 520
+}
+```
+
+## 🎨 UI Components
+
+### Reusable Components
+- **Button**: Primary, secondary, outline variants
+- **Input**: Text input with validation
+- **Badge**: Status indicators
+- **Card**: Content containers
+- **Tabs**: Navigation tabs
+- **Select**: Dropdown selections
+- **Radio Group**: Radio button groups
+- **Textarea**: Multi-line text input
+
+### Page Components
+- **LocationCard**: Dining location display
+- **MenuItemCard**: Food item display
+- **CartItemCard**: Cart item management
+- **OrderCard**: Order status display
+- **OrderTracker**: Real-time order tracking
+
+## 🔧 Configuration
+
+### Tailwind CSS
+- Custom color palette for UCSC branding
+- Responsive design breakpoints
+- Component-based styling
+
+### React Query
+- 5-minute stale time for data
+- 10-minute cache time
+- Automatic background refetching
+- Optimistic updates
+
+## 📱 Mobile Responsiveness
+
+- **Mobile-first design**
+- **Touch-friendly interfaces**
+- **Swipe gestures**
+- **Responsive grid layouts**
+- **Optimized images**
+
+## 🚀 Performance
+
+- **Code splitting** with React.lazy
+- **Image optimization** with proper sizing
+- **Efficient state management** with React Query
+- **Minimal bundle size** with tree shaking
+
+## 🧪 Testing
+
+```bash
+# Run tests
+npm test
+
+# Run tests with coverage
+npm run test:coverage
+
+# Run tests in watch mode
+npm run test:watch
+```
+
+## 📦 Build & Deploy
+
+```bash
+# Build for production
+npm run build
+
+# Deploy to AWS S3
+aws s3 sync build/ s3://your-bucket-name
+
+# Deploy with CloudFront
+aws cloudfront create-invalidation --distribution-id YOUR_DISTRIBUTION_ID --paths "/*"
+```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+## 🎯 Roadmap
+
+- [ ] **User Authentication** - Login/signup system
+- [ ] **Payment Integration** - Stripe/PayPal support
+- [ ] **Push Notifications** - Order updates
+- [ ] **Admin Dashboard** - Restaurant management
+- [ ] **Analytics** - Usage tracking and insights
+- [ ] **Multi-language** - Internationalization
+- [ ] **Dark Mode** - Theme switching
+- [ ] **Offline Support** - PWA capabilities
+
+## 📞 Support
+
+For questions or issues, please contact:
+- **Email**: support@ucsceats.com
+- **GitHub Issues**: [Create an issue](https://github.com/your-repo/ucsc-eats/issues)
+
+---
+
+**Built with ❤️ for UCSC students** 🐌

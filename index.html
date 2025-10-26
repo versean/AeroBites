@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UCSC Eats - Campus Food Delivery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <style>
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-b from-orange-50 via-white to-green-50 min-h-screen">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-lg border-b border-orange-100 shadow-sm">
+        <div class="px-4 py-4">
+            <div class="flex items-center justify-between max-w-7xl mx-auto">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center shadow-lg">
+                        <span class="text-white text-xl font-bold">🍽️</span>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-gray-900">UCSC Eats</h1>
+                        <p class="text-xs text-orange-600">Campus Food Delivery</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto">
+        <!-- Hero Section -->
+        <div class="bg-gradient-to-br from-orange-500 via-orange-600 to-red-500 px-4 py-8 mb-6">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-3xl font-bold text-white mb-2">
+                    Hungry, Slugs? 🐌
+                </h2>
+                <p class="text-orange-100 mb-6">
+                    Order from any dining hall • Drone delivery or pickup
+                </p>
+
+                <!-- Search Bar -->
+                <div class="relative">
+                    <i data-lucide="search" class="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"></i>
+                    <input
+                        type="text"
+                        placeholder="Search for dining halls or food..."
+                        class="w-full pl-12 pr-4 py-6 text-lg rounded-2xl border-none shadow-xl bg-white"
+                    />
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="px-4 mb-6">
+            <div class="grid grid-cols-3 gap-3 max-w-7xl mx-auto">
+                <div class="bg-white rounded-2xl p-4 shadow-md border border-orange-100">
+                    <div class="flex items-center gap-2 mb-1">
+                        <i data-lucide="zap" class="w-4 h-4 text-orange-500"></i>
+                        <span class="text-xs text-gray-500 font-medium">Fast</span>
+                    </div>
+                    <p class="text-lg font-bold text-gray-900">15-25 min</p>
+                </div>
+                <div class="bg-white rounded-2xl p-4 shadow-md border border-green-100">
+                    <div class="flex items-center gap-2 mb-1">
+                        <i data-lucide="map-pin" class="w-4 h-4 text-green-500"></i>
+                        <span class="text-xs text-gray-500 font-medium">Locations</span>
+                    </div>
+                    <p class="text-lg font-bold text-gray-900">6+</p>
+                </div>
+                <div class="bg-white rounded-2xl p-4 shadow-md border border-blue-100">
+                    <div class="flex items-center gap-2 mb-1">
+                        <i data-lucide="clock" class="w-4 h-4 text-blue-500"></i>
+                        <span class="text-xs text-gray-500 font-medium">Open</span>
+                    </div>
+                    <p class="text-lg font-bold text-gray-900">Now</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter -->
+        <div class="px-4 mb-6">
+            <div class="flex items-center gap-3 max-w-7xl mx-auto">
+                <i data-lucide="filter" class="w-5 h-5 text-gray-400"></i>
+                <select class="w-40 rounded-xl border-gray-200 px-3 py-2 border">
+                    <option>All Types</option>
+                    <option>Dining Halls</option>
+                    <option>Cafés</option>
+                    <option>Restaurants</option>
+                    <option>Markets</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Locations Grid -->
+        <div class="px-4 pb-8">
+            <h3 class="text-2xl font-bold text-gray-900 mb-4 max-w-7xl mx-auto">
+                All Dining Locations
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-7xl mx-auto">
+                <!-- Location Card 1 -->
+                <div class="bg-white rounded-3xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-300 cursor-pointer">
+                    <div class="relative h-48 overflow-hidden">
+                        <img
+                            src="https://images.unsplash.com/photo-1567521464027-f127ff144326?w=800"
+                            alt="Cowell/Stevenson Dining Hall"
+                            class="w-full h-full object-cover"
+                        />
+                        <div class="absolute top-3 right-3">
+                            <span class="bg-green-500 text-white px-2 py-1 rounded-full text-xs font-medium">Open</span>
+                        </div>
+                        <div class="absolute bottom-3 left-3">
+                            <span class="bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-medium">🚁 Drone Delivery</span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Cowell/Stevenson Dining Hall</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">Main dining hall serving breakfast, lunch, and dinner</p>
+                        <div class="flex items-center justify-between">
+                            <div class="space-y-1">
+                                <div class="flex items-center gap-2 text-sm text-gray-500">
+                                    <i data-lucide="map-pin" class="w-4 h-4"></i>
+                                    <span>Cowell/Stevenson</span>
+                                </div>
+                                <div class="flex items-center gap-2 text-sm text-gray-500">
+                                    <i data-lucide="clock" class="w-4 h-4"></i>
+                                    <span>7:00 AM - 9:00 PM</span>
+                                </div>
+                            </div>
+                            <div class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center">
+                                <i data-lucide="chevron-right" class="w-5 h-5 text-orange-600"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Location Card 2 -->
+                <div class="bg-white rounded-3xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-300 cursor-pointer">
+                    <div class="relative h-48 overflow-hidden">
+                        <img
+                            src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800"
+                            alt="Crown/Merrill Dining Hall"
+                            class="w-full h-full object-cover"
+                        />
+                        <div class="absolute top-3 right-3">
+                            <span class="bg-green-500 text-white px-2 py-1 rounded-full text-xs font-medium">Open</span>
+                        </div>
+                        <div class="absolute bottom-3 left-3">
+                            <span class="bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-medium">🚁 Drone Delivery</span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Crown/Merrill Dining Hall</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">Modern dining facility with diverse menu options</p>
+                        <div class="flex items-center justify-between">
+                            <div class="space-y-1">
+                                <div class="flex items-center gap-2 text-sm text-gray-500">
+                                    <i data-lucide="map-pin" class="w-4 h-4"></i>
+                                    <span>Crown/Merrill</span>
+                                </div>
+                                <div class="flex items-center gap-2 text-sm text-gray-500">
+                                    <i data-lucide="clock" class="w-4 h-4"></i>
+                                    <span>7:00 AM - 9:00 PM</span>
+                                </div>
+                            </div>
+                            <div class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center">
+                                <i data-lucide="chevron-right" class="w-5 h-5 text-orange-600"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Location Card 3 -->
+                <div class="bg-white rounded-3xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-300 cursor-pointer">
+                    <div class="relative h-48 overflow-hidden">
+                        <img
+                            src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800"
+                            alt="Porter/Kresge Dining Hall"
+                            class="w-full h-full object-cover"
+                        />
+                        <div class="absolute top-3 right-3">
+                            <span class="bg-green-500 text-white px-2 py-1 rounded-full text-xs font-medium">Open</span>
+                        </div>
+                        <div class="absolute bottom-3 left-3">
+                            <span class="bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-medium">🚁 Drone Delivery</span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Porter/Kresge Dining Hall</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">Sustainable dining with organic options</p>
+                        <div class="flex items-center justify-between">
+                            <div class="space-y-1">
+                                <div class="flex items-center gap-2 text-sm text-gray-500">
+                                    <i data-lucide="map-pin" class="w-4 h-4"></i>
+                                    <span>Porter/Kresge</span>
+                                </div>
+                                <div class="flex items-center gap-2 text-sm text-gray-500">
+                                    <i data-lucide="clock" class="w-4 h-4"></i>
+                                    <span>7:00 AM - 9:00 PM</span>
+                                </div>
+                            </div>
+                            <div class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center">
+                                <i data-lucide="chevron-right" class="w-5 h-5 text-orange-600"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Location Card 4 -->
+                <div class="bg-white rounded-3xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-300 cursor-pointer">
+                    <div class="relative h-48 overflow-hidden">
+                        <img
+                            src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=800"
+                            alt="College Nine/Ten Dining Hall"
+                            class="w-full h-full object-cover"
+                        />
+                        <div class="absolute top-3 right-3">
+                            <span class="bg-green-500 text-white px-2 py-1 rounded-full text-xs font-medium">Open</span>
+                        </div>
+                        <div class="absolute bottom-3 left-3">
+                            <span class="bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-medium">🚁 Drone Delivery</span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">College Nine/Ten Dining Hall</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">International cuisine and themed nights</p>
+                        <div class="flex items-center justify-between">
+                            <div class="space-y-1">
+                                <div class="flex items-center gap-2 text-sm text-gray-500">
+                                    <i data-lucide="map-pin" class="w-4 h-4"></i>
+                                    <span>College Nine/Ten</span>
+                                </div>
+                                <div class="flex items-center gap-2 text-sm text-gray-500">
+                                    <i data-lucide="clock" class="w-4 h-4"></i>
+                                    <span>7:00 AM - 9:00 PM</span>
+                                </div>
+                            </div>
+                            <div class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center">
+                                <i data-lucide="chevron-right" class="w-5 h-5 text-orange-600"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Location Card 5 -->
+                <div class="bg-white rounded-3xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-300 cursor-pointer">
+                    <div class="relative h-48 overflow-hidden">
+                        <img
+                            src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800"
+                            alt="Oakes Cafe"
+                            class="w-full h-full object-cover"
+                        />
+                        <div class="absolute top-3 right-3">
+                            <span class="bg-green-500 text-white px-2 py-1 rounded-full text-xs font-medium">Open</span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Oakes Cafe</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">Coffee, pastries, and light meals</p>
+                        <div class="flex items-center justify-between">
+                            <div class="space-y-1">
+                                <div class="flex items-center gap-2 text-sm text-gray-500">
+                                    <i data-lucide="map-pin" class="w-4 h-4"></i>
+                                    <span>Oakes College</span>
+                                </div>
+                                <div class="flex items-center gap-2 text-sm text-gray-500">
+                                    <i data-lucide="clock" class="w-4 h-4"></i>
+                                    <span>6:00 AM - 8:00 PM</span>
+                                </div>
+                            </div>
+                            <div class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center">
+                                <i data-lucide="chevron-right" class="w-5 h-5 text-orange-600"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Location Card 6 -->
+                <div class="bg-white rounded-3xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-300 cursor-pointer">
+                    <div class="relative h-48 overflow-hidden">
+                        <img
+                            src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800"
+                            alt="Rachel Carson Coffee House"
+                            class="w-full h-full object-cover"
+                        />
+                        <div class="absolute top-3 right-3">
+                            <span class="bg-green-500 text-white px-2 py-1 rounded-full text-xs font-medium">Open</span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Rachel Carson Coffee House</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">Student-run coffee shop with organic options</p>
+                        <div class="flex items-center justify-between">
+                            <div class="space-y-1">
+                                <div class="flex items-center gap-2 text-sm text-gray-500">
+                                    <i data-lucide="map-pin" class="w-4 h-4"></i>
+                                    <span>Rachel Carson College</span>
+                                </div>
+                                <div class="flex items-center gap-2 text-sm text-gray-500">
+                                    <i data-lucide="clock" class="w-4 h-4"></i>
+                                    <span>7:00 AM - 10:00 PM</span>
+                                </div>
+                            </div>
+                            <div class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center">
+                                <i data-lucide="chevron-right" class="w-5 h-5 text-orange-600"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-2xl z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-around py-3">
+                <div class="flex flex-col items-center gap-1 min-w-[60px]">
+                    <div class="p-2 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 shadow-lg scale-110">
+                        <i data-lucide="home" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <span class="text-xs font-medium text-orange-600">Browse</span>
+                </div>
+                <div class="flex flex-col items-center gap-1 min-w-[60px]">
+                    <div class="p-2 rounded-2xl bg-transparent">
+                        <i data-lucide="shopping-cart" class="w-6 h-6 text-gray-400"></i>
+                    </div>
+                    <span class="text-xs font-medium text-gray-500">Cart</span>
+                </div>
+                <div class="flex flex-col items-center gap-1 min-w-[60px]">
+                    <div class="p-2 rounded-2xl bg-transparent">
+                        <i data-lucide="clock" class="w-6 h-6 text-gray-400"></i>
+                    </div>
+                    <span class="text-xs font-medium text-gray-500">Orders</span>
+                </div>
+                <div class="flex flex-col items-center gap-1 min-w-[60px]">
+                    <div class="p-2 rounded-2xl bg-transparent">
+                        <i data-lucide="user" class="w-6 h-6 text-gray-400"></i>
+                    </div>
+                    <span class="text-xs font-medium text-gray-500">Profile</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Add some interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add hover effects to location cards
+            const cards = document.querySelectorAll('.bg-white.rounded-3xl');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.02)';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

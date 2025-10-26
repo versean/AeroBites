@@ -1,0 +1,50 @@
+{
+  "name": "DiningLocation",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the dining hall or caf\u00e9"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "dining_hall",
+        "cafe",
+        "restaurant",
+        "market"
+      ],
+      "description": "Type of dining location"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the location"
+    },
+    "image_url": {
+      "type": "string",
+      "description": "Image of the location"
+    },
+    "hours": {
+      "type": "string",
+      "description": "Operating hours"
+    },
+    "location": {
+      "type": "string",
+      "description": "Campus location"
+    },
+    "is_open": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether location is currently open"
+    },
+    "supports_drone": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether drone delivery is available"
+    }
+  },
+  "required": [
+    "name",
+    "type"
+  ]
+}

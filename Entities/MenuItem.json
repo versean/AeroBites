@@ -1,0 +1,82 @@
+{
+  "name": "MenuItem",
+  "type": "object",
+  "properties": {
+    "dining_location_id": {
+      "type": "string",
+      "description": "ID of the dining location"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the menu item"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the item"
+    },
+    "price": {
+      "type": "number",
+      "description": "Price in dollars"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "breakfast",
+        "lunch",
+        "dinner",
+        "beverage",
+        "snack",
+        "dessert",
+        "specialty"
+      ],
+      "description": "Category of food item"
+    },
+    "meal_period": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "breakfast",
+          "lunch",
+          "dinner",
+          "all_day"
+        ]
+      },
+      "description": "When this item is available"
+    },
+    "image_url": {
+      "type": "string",
+      "description": "Image of the menu item"
+    },
+    "dietary_info": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "vegetarian",
+          "vegan",
+          "gluten_free",
+          "dairy_free",
+          "nut_free",
+          "halal"
+        ]
+      },
+      "description": "Dietary information"
+    },
+    "is_available": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether item is currently available"
+    },
+    "calories": {
+      "type": "number",
+      "description": "Calorie count"
+    }
+  },
+  "required": [
+    "dining_location_id",
+    "name",
+    "price",
+    "category"
+  ]
+}
