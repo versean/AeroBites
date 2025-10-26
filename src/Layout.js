@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { createPageUrl } from "./utils";
-import { Home, ShoppingCart, Clock, User } from "lucide-react";
+import { Home, ShoppingCart, Clock, User, MessageCircle } from "lucide-react";
+import AIChat from "./components/ai/AIChat";
 
 export default function Layout({ children, currentPageName }) {
   const location = useLocation();
+  const [isChatOpen, setIsChatOpen] = useState(false);
   
   const navItems = [
     { name: "Browse", path: createPageUrl("Home"), icon: Home },
@@ -85,6 +87,18 @@ export default function Layout({ children, currentPageName }) {
           </div>
         </div>
       </nav>
+
+      {/* Brian Chat Button */}
+      <button
+        onClick={() => setIsChatOpen(true)}
+        className="fixed bottom-24 right-4 w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 z-40"
+        title="Chat with Brian"
+      >
+        <MessageCircle className="w-6 h-6 text-white mx-auto" />
+      </button>
+
+      {/* Brian AI Chat */}
+      <AIChat isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
     </div>
   );
 }

@@ -9,6 +9,7 @@ import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
 import { RadioGroup, RadioGroupItem } from "../components/ui/radio-group";
 import { Textarea } from "../components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../components/ui/select";
 import CartItemCard from "../components/cart/CartItemCard";
 import DormSelector from "../components/cart/DormSelector";
 
@@ -21,10 +22,56 @@ export default function CartPage() {
   const [notes, setNotes] = useState("");
   const [isPlacingOrder, setIsPlacingOrder] = useState(false);
 
+  // UCSC Housing Options
+  const dormOptions = [
+    // Cowell College
+    "Adams House", "Prescott House", "Parkman House", "Beard House", "Parrington House", "Turner House", "Morison House",
+    
+    // Crown College
+    "Maxwell House", "Harvey House", "Galen House", "Galileo House", "Rutherford House", "Descartes House", "Gauss House",
+    
+    // Stevenson College
+    "Lorde-Studds House", "Kochiyama House", "Bulosan House", "Gandhi-Kahlo House", "Chávez-Menchú House", "DuBois House",
+    
+    // Porter College
+    "Casa Primera", "Casa Segunda", "Casa Tercera", "Casa Cuarta", "Casa Quinta", "Casa Sexta", "Casa Séptima", "Casa Octava", "Leonardo House",
+    
+    // Kresge College
+    "Casa Frida Kahlo", "El Hajj Malik & Betty Shabazz", "Harvey Milk House", "Liliuokalani-Minami", "Stephen Biko House", "Hong-Lim House", "Bayit Elie Wiesel",
+    
+    // Rachel Carson College
+    "A-L (Rachel Carson)", "B-L (Rachel Carson)", "C-L (Rachel Carson)", "D-L (Rachel Carson)", 
+    "Garden A (Rachel Carson)", "Garden B (Rachel Carson)", "Garden C (Rachel Carson)", "Garden D (Rachel Carson)",
+    
+    // John R. Lewis College
+    "Ohlone House", "Amnesty House", "Angela Davis House",
+    
+    // Other Housing
+    "Hague House", "Gandhi House", "Geneva House", "Porter House A", "Porter House B",
+    
+    // College Names (for general reference)
+    "Cowell College", "Stevenson College", "Crown College", "Merrill College",
+    "Porter College", "Kresge College", "Oakes College", "Rachel Carson College",
+    "College Nine", "College Ten", "John R. Lewis College", "Graduate Student Housing", "University Apartments"
+  ];
+
   useEffect(() => {
     const savedCart = localStorage.getItem('ucsc_cart');
     if (savedCart) {
       setCart(JSON.parse(savedCart));
+    }
+
+    // Load saved delivery address as default
+    const savedUser = localStorage.getItem('ucsc_user');
+    if (savedUser) {
+      const user = JSON.parse(savedUser);
+      const savedAddress = localStorage.getItem(`delivery_address_${user.email}`);
+      if (savedAddress) {
+        const address = JSON.parse(savedAddress);
+        if (address.dorm) {
+          setDeliveryAddress(address.dorm);
+        }
+      }
     }
   }, []);
 
@@ -72,10 +119,18 @@ export default function CartPage() {
           price: item.price,
         })),
         total_amount: calculateTotal(),
-        estimated_time: deliveryMethod === "drone" ? "15-20 minutes" : "10-15 minutes",
+        estimated_time: deliveryMethod === "drone" ? "5 minutes" : "10-15 minutes",
         placed_at: new Date().toISOString(),
         notes: notes,
       };
+
+      // Save the selected delivery address for future orders
+      if (deliveryMethod === "drone" && deliveryAddress) {
+        const currentAddress = localStorage.getItem(`delivery_address_${user.email}`);
+        const address = currentAddress ? JSON.parse(currentAddress) : {};
+        address.dorm = deliveryAddress;
+        localStorage.setItem(`delivery_address_${user.email}`, JSON.stringify(address));
+      }
 
       await base44.entities.Order.create(orderData);
       
@@ -191,10 +246,28 @@ export default function CartPage() {
 
               {deliveryMethod === "drone" && (
                 <div className="mt-4">
+                  <div className="mb-3">
+                    <Label className="text-sm font-medium text-gray-700 mb-2 block">
+                      🚁 Drone Delivery Address
+                    </Label>
+                    <p className="text-xs text-gray-500 mb-3">
+                      Choose where you want your order delivered. You can select any UCSC housing location.
+                    </p>
+                  </div>
                   <DormSelector
                     value={deliveryAddress}
                     onChange={setDeliveryAddress}
                   />
+                  {deliveryAddress && (
+                    <div className="mt-3 p-3 bg-green-50 border border-green-200 rounded-lg">
+                      <div className="flex items-center gap-2">
+                        <MapPin className="w-4 h-4 text-green-600" />
+                        <span className="text-sm font-medium text-green-800">
+                          Delivering to: {deliveryAddress}
+                        </span>
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
 
@@ -232,6 +305,18 @@ export default function CartPage() {
             {/* Order Summary */}
             <div className="bg-gradient-to-br from-orange-500 to-orange-600 rounded-3xl shadow-xl p-6 mb-6 text-white">
               <h3 className="text-xl font-bold mb-4">Order Summary</h3>
+              
+              {/* Delivery Info */}
+              {deliveryMethod === "drone" && deliveryAddress && (
+                <div className="mb-4 p-3 bg-orange-400/20 rounded-lg border border-orange-300/30">
+                  <div className="flex items-center gap-2 mb-1">
+                    <MapPin className="w-4 h-4" />
+                    <span className="text-sm font-medium">Delivery Address</span>
+                  </div>
+                  <p className="text-sm text-orange-100">{deliveryAddress}</p>
+                </div>
+              )}
+              
               <div className="space-y-2 mb-4">
                 <div className="flex justify-between">
                   <span>Subtotal</span>
